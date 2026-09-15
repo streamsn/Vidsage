@@ -9,3 +9,7 @@ build/
 .vercel
 .turbo
 *.tsbuildinfo
+
+# Extension signing key: pins the Chrome extension ID (see apps/extension/EXTENSION_ID).
+# The private half must never be committed or shared.
+apps/extension/keys/

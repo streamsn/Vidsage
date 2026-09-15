@@ -26,12 +26,19 @@ export async function summarizeTranscript(transcript: string): Promise<VideoSumm
       "You summarize YouTube video transcripts. Respond with ONLY a JSON object " +
       'shaped exactly like {"summary": string, "topics": string[]} — summary is a ' +
       "concise 3-6 sentence overview, topics is 3-6 short keyword phrases suitable " +
-      "for searching for related videos. No markdown, no commentary, just the JSON object.",
-    messages: [{ role: "user", content: transcript }],
+      "for searching for related videos.",
+    messages: [
+      { role: "user", content: transcript },
+      // Prefilling the assistant turn with "{" forces the response to start
+      // as raw JSON — confirmed via live testing that without this, the
+      // model sometimes wraps the object in ```json fences despite being
+      // told not to, which broke JSON.parse.
+      { role: "assistant", content: "{" },
+    ],
   });
 
-  const text = message.content.find((block) => block.type === "text")?.text ?? "{}";
-  const parsed = JSON.parse(text) as VideoSummary;
+  const text = message.content.find((block) => block.type === "text")?.text ?? "}";
+  const parsed = JSON.parse("{" + text) as VideoSummary;
   return parsed;
 }
 
