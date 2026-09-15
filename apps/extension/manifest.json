@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "VidSage",
+  "version": "0.0.1",
+  "description": "Ask questions about any YouTube video, right from your browser.",
+  "action": {},
+  "side_panel": {
+    "default_path": "src/sidepanel/index.html"
+  },
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["src/content/youtube.ts"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["identity", "sidePanel", "storage", "tabs"],
+  "host_permissions": [
+    "https://*.supabase.co/*",
+    "http://localhost:3000/*"
+  ]
+}
