@@ -7,6 +7,11 @@ import { useCredits } from "@/lib/useCredits";
 import { GoogleSignInButton } from "../components/GoogleSignInButton";
 import { AccountBar } from "../components/AccountBar";
 
+const PACKAGE_BLURB: Record<CreditPackageId, string> = {
+  small: "Perfect for trying it out or one deep dive into a video.",
+  large: "Half the price per question — best if you use VidSage regularly.",
+};
+
 export default function PricingPage() {
   const { session, loaded: sessionLoaded } = useSupabaseSession();
   const { credits } = useCredits(session);
@@ -42,7 +47,9 @@ export default function PricingPage() {
     <main className="mx-auto flex max-w-2xl flex-col items-center gap-10 px-4 py-12 text-center sm:px-6 sm:py-24">
       <div>
         <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Buy credits</h1>
-        <p className="mt-1.5 text-sm text-stone-500">No subscription — credits never expire.</p>
+        <p className="mt-1.5 text-sm text-stone-500">
+          1 credit = 1 question answered. No subscription — credits never expire.
+        </p>
         {session && <div className="mt-4"><AccountBar session={session} credits={credits} /></div>}
       </div>
 
@@ -77,7 +84,10 @@ export default function PricingPage() {
                 {featured ? "Popular" : "Best value"}
               </span>
               <p className="mt-3 text-2xl font-semibold">{pkg.credits} credits</p>
-              <p className="text-stone-500">${pkg.priceUsd}</p>
+              <p className="text-stone-500">
+                ${pkg.priceUsd} <span className="text-xs text-stone-400">(${(pkg.priceUsd / pkg.credits).toFixed(2)}/question)</span>
+              </p>
+              <p className="mt-2 text-sm text-stone-500">{PACKAGE_BLURB[pkg.id as CreditPackageId]}</p>
               <button
                 onClick={() => handleBuy(pkg.id as CreditPackageId)}
                 disabled={!session || pendingPackage !== null}

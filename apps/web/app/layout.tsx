@@ -8,9 +8,23 @@ import { NavLinks } from "./components/NavLinks";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
+const description = "Paste a YouTube link, get an instant AI summary, and ask follow-up questions about the video.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"),
   title: "VidSage",
-  description: "Ask questions about any YouTube video, right from your browser.",
+  description,
+  openGraph: {
+    title: "VidSage — ask any YouTube video a question",
+    description,
+    siteName: "VidSage",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "VidSage — ask any YouTube video a question",
+    description,
+  },
 };
 
 export const viewport: Viewport = {

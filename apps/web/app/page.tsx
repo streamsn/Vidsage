@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import type { AnalyzeResponse, AskResponse, VideoRecord } from "@video-grabber/shared";
 import { useSupabaseSession } from "@/lib/useSupabaseSession";
 import { useCredits } from "@/lib/useCredits";
@@ -193,6 +194,9 @@ export default function HomePage() {
               <div className="mt-1">
                 <GoogleSignInButton />
               </div>
+              <Link href="/pricing" className="mt-1 text-xs text-stone-500 hover:text-stone-700 hover:underline">
+                Then $10 for 100 questions, credits never expire — see full pricing →
+              </Link>
             </div>
           </>
         )}
