@@ -39,11 +39,11 @@ export default function PricingPage() {
   }
 
   return (
-    <main className="mx-auto flex max-w-2xl flex-col items-center gap-8 px-4 py-12 text-center sm:px-6 sm:py-24">
+    <main className="mx-auto flex max-w-2xl flex-col items-center gap-10 px-4 py-12 text-center sm:px-6 sm:py-24">
       <div>
         <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Buy credits</h1>
-        <p className="mt-1 text-sm text-slate-500">No subscription — credits never expire.</p>
-        {session && <div className="mt-3"><AccountBar session={session} credits={credits} /></div>}
+        <p className="mt-1.5 text-sm text-stone-500">No subscription — credits never expire.</p>
+        {session && <div className="mt-4"><AccountBar session={session} credits={credits} /></div>}
       </div>
 
       {error && (
@@ -51,8 +51,8 @@ export default function PricingPage() {
       )}
 
       {sessionLoaded && !session && (
-        <div className="flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-          <p className="text-sm text-slate-500">Sign in to buy credits.</p>
+        <div className="flex flex-col items-center gap-3 rounded-2xl border border-stone-200 bg-white p-8 shadow-sm">
+          <p className="text-sm text-stone-500">Sign in to buy credits.</p>
           <GoogleSignInButton />
         </div>
       )}
@@ -64,26 +64,26 @@ export default function PricingPage() {
             <div
               key={pkg.id}
               className={
-                "relative rounded-2xl border bg-white p-6 shadow-sm " +
-                (featured ? "border-indigo-300 ring-1 ring-indigo-100" : "border-slate-200")
+                "relative rounded-2xl border bg-white p-6 shadow-sm transition-shadow hover:shadow-md " +
+                (featured ? "border-brand-300 ring-1 ring-brand-100" : "border-stone-200")
               }
             >
               <span
                 className={
                   "inline-block rounded-full px-2.5 py-1 text-xs font-medium " +
-                  (featured ? "bg-indigo-50 text-indigo-600" : "bg-slate-100 text-slate-500")
+                  (featured ? "bg-brand-100 text-brand-700" : "bg-stone-100 text-stone-500")
                 }
               >
                 {featured ? "Popular" : "Best value"}
               </span>
               <p className="mt-3 text-2xl font-semibold">{pkg.credits} credits</p>
-              <p className="text-slate-500">${pkg.priceUsd}</p>
+              <p className="text-stone-500">${pkg.priceUsd}</p>
               <button
                 onClick={() => handleBuy(pkg.id as CreditPackageId)}
                 disabled={!session || pendingPackage !== null}
                 className={
                   "mt-4 w-full rounded-xl px-4 py-3 text-sm font-medium text-white shadow-sm transition-colors disabled:cursor-not-allowed disabled:opacity-40 sm:py-2 " +
-                  (featured ? "bg-indigo-600 hover:bg-indigo-500" : "bg-slate-900 hover:bg-slate-800")
+                  (featured ? "bg-brand-600 hover:bg-brand-700" : "bg-stone-900 hover:bg-stone-800")
                 }
               >
                 {pendingPackage === pkg.id ? "Redirecting…" : "Buy"}

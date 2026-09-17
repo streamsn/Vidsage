@@ -2,16 +2,16 @@ export default function PrivacyPage() {
   return (
     <main className="mx-auto max-w-2xl px-4 py-12 sm:px-6 sm:py-16">
       <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Privacy Policy</h1>
-      <p className="mt-1 text-sm text-slate-500">Effective September 16, 2026</p>
+      <p className="mt-1 text-sm text-stone-500">Effective September 16, 2026</p>
 
-      <div className="mt-8 flex flex-col gap-6 text-sm leading-relaxed text-slate-700">
+      <div className="mt-8 flex flex-col gap-6 text-sm leading-relaxed text-stone-700">
         <p>
           This policy explains what information VidSage ("we," "us") collects when you use the
           VidSage website and service (the "Service"), and how we use it.
         </p>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-900">Information we collect</h2>
+          <h2 className="text-base font-semibold text-stone-900">Information we collect</h2>
           <ul className="mt-2 list-disc space-y-1 pl-5">
             <li>
               <strong>Account information.</strong> When you sign in with Google, we receive your
@@ -30,7 +30,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-900">How we use this information</h2>
+          <h2 className="text-base font-semibold text-stone-900">How we use this information</h2>
           <p className="mt-2">We use the information above to:</p>
           <ul className="mt-2 list-disc space-y-1 pl-5">
             <li>Provide the Service — generate summaries and answer your questions.</li>
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-900">Third-party services we use</h2>
+          <h2 className="text-base font-semibold text-stone-900">Third-party services we use</h2>
           <p className="mt-2">
             VidSage is built on top of several third-party services, each of which processes a
             slice of the data described above under its own privacy policy:
@@ -74,7 +74,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-900">Data retention</h2>
+          <h2 className="text-base font-semibold text-stone-900">Data retention</h2>
           <p className="mt-2">
             Cached video summaries and transcripts are retained indefinitely so they can be reused
             across users. Your account, question history, and credit balance are retained until
@@ -83,7 +83,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-900">Your rights</h2>
+          <h2 className="text-base font-semibold text-stone-900">Your rights</h2>
           <p className="mt-2">
             You can ask us to access, correct, or delete your personal data at any time by
             emailing us — see Contact below.
@@ -91,7 +91,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-900">Children's privacy</h2>
+          <h2 className="text-base font-semibold text-stone-900">Children's privacy</h2>
           <p className="mt-2">
             The Service is not directed to children under 13, and we do not knowingly collect
             personal information from them.
@@ -99,7 +99,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-900">Changes to this policy</h2>
+          <h2 className="text-base font-semibold text-stone-900">Changes to this policy</h2>
           <p className="mt-2">
             We may update this policy from time to time. We'll update the effective date above
             when we do.
@@ -107,10 +107,10 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-base font-semibold text-slate-900">Contact</h2>
+          <h2 className="text-base font-semibold text-stone-900">Contact</h2>
           <p className="mt-2">
             Questions about this policy?{" "}
-            <a href="mailto:kaabeerjr2@gmail.com" className="text-indigo-600 hover:underline">
+            <a href="mailto:kaabeerjr2@gmail.com" className="text-brand-700 hover:underline">
               kaabeerjr2@gmail.com
             </a>
           </p>

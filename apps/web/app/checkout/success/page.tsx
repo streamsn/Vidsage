@@ -9,10 +9,10 @@ export default function CheckoutSuccessPage() {
         </svg>
       </span>
       <h1 className="text-2xl font-semibold tracking-tight">Thanks — credits are on the way</h1>
-      <p className="text-slate-600">Your balance updates automatically — head back and keep asking.</p>
+      <p className="text-stone-600">Your balance updates automatically — head back and keep asking.</p>
       <Link
         href="/"
-        className="mt-2 rounded-xl bg-indigo-600 px-4 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-indigo-500 sm:py-2"
+        className="mt-2 rounded-xl bg-brand-600 px-4 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-brand-700 sm:py-2"
       >
         Back to VidSage
       </Link>
