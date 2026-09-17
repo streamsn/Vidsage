@@ -44,7 +44,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "videoId must be a valid YouTube video ID" }, { status: 400 });
   }
 
-  const { data: allowed, error: rateLimitError } = await supabase.rpc("rpc_check_analyze_rate_limit");
+  const { data: allowed, error: rateLimitError } = await supabase.rpc("rpc_check_rate_limit", {
+    p_action: "analyze",
+  });
   if (rateLimitError) {
     return NextResponse.json({ error: rateLimitError.message }, { status: 500 });
   }

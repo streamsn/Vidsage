@@ -23,6 +23,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Question is too long (2000 characters max)." }, { status: 400 });
   }
 
+  const { data: allowed, error: rateLimitError } = await supabase.rpc("rpc_check_rate_limit", {
+    p_action: "ask",
+  });
+  if (rateLimitError) {
+    return NextResponse.json({ error: rateLimitError.message }, { status: 500 });
+  }
+  if (!allowed) {
+    return NextResponse.json({ error: "Too many questions — try again in a bit." }, { status: 429 });
+  }
+
   const { data: video, error: videoError } = await supabase
     .from("videos")
     .select("transcript, summary, status")
