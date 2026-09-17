@@ -45,7 +45,7 @@ export function WaitlistSection() {
         </svg>
         Coming next
       </span>
-      <h2 className="mt-4 text-lg font-semibold tracking-tight text-stone-900 sm:text-xl">
+      <h2 className="mt-4 font-serif text-xl font-medium tracking-tight text-stone-900 sm:text-2xl">
         We're building something new in this space
       </h2>
       <p className="mt-1.5 text-sm text-stone-500">

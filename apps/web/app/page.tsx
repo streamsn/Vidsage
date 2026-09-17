@@ -141,28 +141,42 @@ export default function HomePage() {
   return (
     <main className="relative">
       <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[28rem] overflow-hidden"
+        className="relative overflow-hidden"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 55% at 50% 12%, rgba(255,248,236,0.95), transparent 60%), " +
+            "linear-gradient(180deg, #F3E4CF 0%, #E7C9A0 28%, #C68F4E 58%, #8F5C2C 82%, #52341A 100%)",
+        }}
       >
-        <div className="absolute left-1/2 top-[-9rem] h-[26rem] w-[38rem] -translate-x-1/2 rounded-full bg-brand-200/50 blur-3xl" />
-        <div className="absolute right-[-6rem] top-10 h-64 w-64 rounded-full bg-brand-300/30 blur-3xl" />
-      </div>
-
-      <div className="mx-auto flex max-w-2xl flex-col gap-10 px-4 py-12 sm:px-6 sm:py-20">
-        <div className="text-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-100 px-3 py-1 text-xs font-medium text-brand-700">
+        <div className="relative z-10 mx-auto max-w-2xl px-4 pb-20 pt-14 text-center sm:px-6 sm:pb-28 sm:pt-20">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-brand-700 shadow-sm">
             <SparkleIcon />
             3 free credits when you sign up
           </span>
-          <h1 className="mt-5 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl sm:leading-tight">
-            Ask any <span className="text-brand-600">YouTube video</span> a question
+          <h1 className="mt-6 font-serif text-4xl font-medium leading-[1.1] tracking-tight text-white drop-shadow-sm sm:text-5xl">
+            Any YouTube video,<br />fully understood
           </h1>
-          <p className="mx-auto mt-3 max-w-md text-sm text-stone-500 sm:text-base">
+          <p className="mx-auto mt-4 max-w-md text-sm text-white/90 sm:text-base">
             Paste a link, get a summary, and chat with the video itself.
           </p>
-          {session && <div className="mt-4"><AccountBar session={session} credits={credits} /></div>}
+          {session && <div className="mt-4"><AccountBar session={session} credits={credits} light /></div>}
         </div>
 
+        <svg
+          aria-hidden
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          className="absolute inset-x-0 bottom-0 h-16 w-full sm:h-24"
+        >
+          <polygon
+            points="0,120 0,72 120,96 260,42 400,90 560,32 720,82 880,46 1040,96 1200,56 1440,86 1440,120"
+            fill="#3A2412"
+            fillOpacity="0.55"
+          />
+        </svg>
+      </div>
+
+      <div className="mx-auto flex max-w-2xl flex-col gap-10 px-4 pb-12 pt-10 sm:px-6 sm:pb-20 sm:pt-14">
         {sessionLoaded && !session && (
           <>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -201,7 +215,7 @@ export default function HomePage() {
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-700">
                 <SparkleIcon />
               </span>
-              <h2 className="text-xl font-semibold tracking-tight">Ready to try it?</h2>
+              <h2 className="font-serif text-2xl font-medium tracking-tight">Ready to try it?</h2>
               <p className="text-sm text-stone-500">Sign in with Google to get your 3 free credits.</p>
               <div className="mt-1">
                 <GoogleSignInButton />
