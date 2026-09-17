@@ -5,7 +5,10 @@ export function Logo({ className = "h-8 w-8" }: { className?: string }) {
       <path
         d="M8.5 12A3.5 3.5 0 0112 8.5h8A3.5 3.5 0 0123.5 12v5A3.5 3.5 0 0120 20.5h-5.6l-3.9 2.9a.7.7 0 01-1.12-.56V20.5A3.5 3.5 0 018.5 17v-5z"
         fill="#FFFFFF"
-        fillOpacity="0.16"
+        fillOpacity="0.32"
+        stroke="#FFFFFF"
+        strokeOpacity="0.4"
+        strokeWidth="0.6"
       />
       <path
         d="M14 12.6v6.3a.55.55 0 00.85.46l5-3.15a.55.55 0 000-.93l-5-3.15a.55.55 0 00-.85.47z"

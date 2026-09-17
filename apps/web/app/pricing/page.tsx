@@ -46,7 +46,10 @@ export default function PricingPage() {
   return (
     <main className="mx-auto flex max-w-2xl flex-col items-center gap-10 px-4 py-12 text-center sm:px-6 sm:py-24">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Buy credits</h1>
+        <span className="inline-flex items-center rounded-full bg-brand-100 px-3 py-1 text-xs font-medium text-brand-700">
+          Pay as you go
+        </span>
+        <h1 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">Buy credits</h1>
         <p className="mt-1.5 text-sm text-stone-500">
           1 credit = 1 question answered. No subscription — credits never expire.
         </p>
@@ -85,7 +88,7 @@ export default function PricingPage() {
               </span>
               <p className="mt-3 text-2xl font-semibold">{pkg.credits} credits</p>
               <p className="text-stone-500">
-                ${pkg.priceUsd} <span className="text-xs text-stone-400">(${(pkg.priceUsd / pkg.credits).toFixed(2)}/question)</span>
+                ${pkg.priceUsd} <span className="text-xs text-stone-500">(${(pkg.priceUsd / pkg.credits).toFixed(2)}/question)</span>
               </p>
               <p className="mt-2 text-sm text-stone-500">{PACKAGE_BLURB[pkg.id as CreditPackageId]}</p>
               <button
@@ -96,7 +99,7 @@ export default function PricingPage() {
                   (featured ? "bg-brand-600 hover:bg-brand-700" : "bg-stone-900 hover:bg-stone-800")
                 }
               >
-                {pendingPackage === pkg.id ? "Redirecting…" : "Buy"}
+                {pendingPackage === pkg.id ? "Redirecting…" : session ? "Buy" : "Sign in to buy"}
               </button>
             </div>
           );

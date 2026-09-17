@@ -26,7 +26,10 @@ export default function HistoryPage() {
   return (
     <main className="mx-auto flex max-w-2xl flex-col gap-8 px-4 py-12 sm:px-6 sm:py-20">
       <div className="text-center">
-        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">History</h1>
+        <span className="inline-flex items-center rounded-full bg-brand-100 px-3 py-1 text-xs font-medium text-brand-700">
+          Your activity
+        </span>
+        <h1 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">History</h1>
         <p className="mt-1.5 text-sm text-stone-500">Videos you've analyzed and the questions you've asked.</p>
       </div>
 
@@ -64,7 +67,7 @@ export default function HistoryPage() {
                 <div className="min-w-0">
                   <p className="truncate font-medium">{video.title ?? video.id}</p>
                   {video.channelTitle && <p className="text-sm text-stone-500">{video.channelTitle}</p>}
-                  <p className="mt-0.5 text-xs text-stone-400">
+                  <p className="mt-0.5 text-xs text-stone-500">
                     {questions.length} question{questions.length === 1 ? "" : "s"}
                   </p>
                 </div>
@@ -72,7 +75,7 @@ export default function HistoryPage() {
                   viewBox="0 0 24 24"
                   fill="none"
                   className={
-                    "h-4 w-4 flex-shrink-0 text-stone-400 transition-transform " + (isOpen ? "rotate-180" : "")
+                    "h-4 w-4 flex-shrink-0 text-stone-500 transition-transform " + (isOpen ? "rotate-180" : "")
                   }
                 >
                   <path

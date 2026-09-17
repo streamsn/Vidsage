@@ -34,7 +34,16 @@ export function WaitlistSection() {
   return (
     <div className="rounded-2xl border border-brand-200/70 bg-brand-50/60 p-8 text-center shadow-sm sm:p-10">
       <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-medium text-brand-700 shadow-sm">
-        🚀 Coming next
+        <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5">
+          <path
+            d="M3 17l6-6 4 4 8-8M21 7h-5m5 0v5"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        Coming next
       </span>
       <h2 className="mt-4 text-lg font-semibold tracking-tight text-stone-900 sm:text-xl">
         We're building something new in this space

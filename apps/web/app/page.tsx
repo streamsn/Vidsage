@@ -13,6 +13,14 @@ import { WaitlistSection } from "./components/WaitlistSection";
 const OUT_OF_CREDITS_PLACEHOLDER =
   "Your answer is ready — buy more credits to reveal it and keep asking questions about this video.";
 
+function SparkleIcon({ className = "h-3.5 w-3.5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M12 2l1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7L12 2z" />
+    </svg>
+  );
+}
+
 function FeatureCard({
   icon,
   title,
@@ -143,7 +151,8 @@ export default function HomePage() {
       <div className="mx-auto flex max-w-2xl flex-col gap-10 px-4 py-12 sm:px-6 sm:py-20">
         <div className="text-center">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-100 px-3 py-1 text-xs font-medium text-brand-700">
-            ✨ 3 free credits when you sign up
+            <SparkleIcon />
+            3 free credits when you sign up
           </span>
           <h1 className="mt-5 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl sm:leading-tight">
             Ask any <span className="text-brand-600">YouTube video</span> a question
@@ -188,13 +197,17 @@ export default function HomePage() {
               />
             </div>
 
-            <div className="flex flex-col items-center gap-3 rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-sm">
-              <h2 className="text-lg font-semibold tracking-tight">Ready to try it?</h2>
+            <div className="flex flex-col items-center gap-3 rounded-2xl border border-brand-200/70 bg-white p-8 text-center shadow-sm">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+                <SparkleIcon />
+              </span>
+              <h2 className="text-xl font-semibold tracking-tight">Ready to try it?</h2>
               <p className="text-sm text-stone-500">Sign in with Google to get your 3 free credits.</p>
               <div className="mt-1">
                 <GoogleSignInButton />
               </div>
-              <Link href="/pricing" className="mt-1 text-xs text-stone-500 hover:text-stone-700 hover:underline">
+              <p className="text-xs text-stone-500">No credit card required</p>
+              <Link href="/pricing" className="text-xs text-stone-500 hover:text-stone-700 hover:underline">
                 Then $10 for 100 questions, credits never expire — see full pricing →
               </Link>
             </div>
