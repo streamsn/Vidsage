@@ -31,12 +31,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </span>
               VidSage
             </Link>
-            <Link
-              href="/pricing"
-              className="-m-2 rounded-lg p-2 text-sm font-medium text-slate-500 hover:text-slate-900"
-            >
-              Pricing
-            </Link>
+            <div className="flex items-center gap-1">
+              <Link
+                href="/history"
+                className="-m-2 rounded-lg p-2 text-sm font-medium text-slate-500 hover:text-slate-900"
+              >
+                History
+              </Link>
+              <Link
+                href="/pricing"
+                className="-m-2 rounded-lg p-2 text-sm font-medium text-slate-500 hover:text-slate-900"
+              >
+                Pricing
+              </Link>
+            </div>
           </nav>
         </header>
         <div className="flex-1">{children}</div>

@@ -67,6 +67,15 @@ export interface CreditsResponse {
   hasUnresolvedTeaser: boolean;
 }
 
+export interface HistoryEntry {
+  video: VideoRecord;
+  questions: QuestionRecord[];
+}
+
+export interface HistoryResponse {
+  entries: HistoryEntry[];
+}
+
 // Messages passed between the content script, background service worker,
 // and side panel inside the extension.
 export type ExtensionMessage =
