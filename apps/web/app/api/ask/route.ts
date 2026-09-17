@@ -19,6 +19,9 @@ export async function POST(request: Request) {
   if (!videoId || !question?.trim()) {
     return NextResponse.json({ error: "videoId and question are required" }, { status: 400 });
   }
+  if (question.length > 2000) {
+    return NextResponse.json({ error: "Question is too long (2000 characters max)." }, { status: 400 });
+  }
 
   const { data: video, error: videoError } = await supabase
     .from("videos")

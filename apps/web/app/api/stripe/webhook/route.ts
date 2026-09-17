@@ -25,12 +25,19 @@ export async function POST(request: Request) {
   }
 
   if (event.type === "checkout.session.completed") {
-    const session = event.data.object as { metadata?: Record<string, string> };
+    const session = event.data.object as { metadata?: Record<string, string>; payment_status?: string };
     const userId = session.metadata?.supabase_user_id;
     const credits = Number(session.metadata?.credits);
 
     if (!userId || !credits) {
       return NextResponse.json({ error: "Missing metadata on checkout session" }, { status: 400 });
+    }
+
+    // Card payments settle synchronously, so this is normally already "paid"
+    // by the time this event fires. Guards against granting credits early if
+    // an async payment method (not currently offered) is ever enabled.
+    if (session.payment_status !== "paid") {
+      return NextResponse.json({ received: true });
     }
 
     const admin = createSupabaseAdminClient();

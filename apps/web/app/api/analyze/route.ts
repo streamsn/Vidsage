@@ -11,6 +11,7 @@ export const runtime = "nodejs";
 
 const POLL_INTERVAL_MS = 1500;
 const POLL_TIMEOUT_MS = 20_000;
+const VIDEO_ID_RE = /^[a-zA-Z0-9_-]{11}$/;
 
 async function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -36,10 +37,19 @@ async function pollUntilReady(admin: ReturnType<typeof createSupabaseAdminClient
 export async function POST(request: Request) {
   const auth = await requireUser(request);
   if (auth instanceof NextResponse) return auth;
+  const { supabase } = auth;
 
   const { videoId } = (await request.json()) as AnalyzeRequest;
-  if (!videoId) {
-    return NextResponse.json({ error: "videoId is required" }, { status: 400 });
+  if (!videoId || !VIDEO_ID_RE.test(videoId)) {
+    return NextResponse.json({ error: "videoId must be a valid YouTube video ID" }, { status: 400 });
+  }
+
+  const { data: allowed, error: rateLimitError } = await supabase.rpc("rpc_check_analyze_rate_limit");
+  if (rateLimitError) {
+    return NextResponse.json({ error: rateLimitError.message }, { status: 500 });
+  }
+  if (!allowed) {
+    return NextResponse.json({ error: "Too many analyze requests — try again in a bit." }, { status: 429 });
   }
 
   const admin = createSupabaseAdminClient();
