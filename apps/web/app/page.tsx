@@ -12,6 +12,26 @@ import { WaitlistSection } from "./components/WaitlistSection";
 const OUT_OF_CREDITS_PLACEHOLDER =
   "Your answer is ready — buy more credits to reveal it and keep asking questions about this video.";
 
+function FeatureCard({
+  icon,
+  title,
+  body,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
+      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+        {icon}
+      </span>
+      <h3 className="mt-4 text-base font-semibold text-stone-900">{title}</h3>
+      <p className="mt-1.5 text-sm leading-relaxed text-stone-500">{body}</p>
+    </div>
+  );
+}
+
 function extractVideoId(input: string): string | null {
   const trimmed = input.trim();
   if (/^[\w-]{11}$/.test(trimmed)) return trimmed;
@@ -134,10 +154,47 @@ export default function HomePage() {
         </div>
 
         {sessionLoaded && !session && (
-          <div className="flex flex-col items-center gap-3 rounded-2xl border border-stone-200 bg-white p-8 shadow-sm">
-            <p className="text-sm text-stone-500">Sign in to get started.</p>
-            <GoogleSignInButton />
-          </div>
+          <>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <FeatureCard
+                icon={
+                  <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
+                    <path
+                      d="M4 6h16M4 12h10M4 18h7"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                }
+                title="Skip the scrubbing"
+                body="Paste any YouTube link and get an instant AI summary of the key points — no more dragging the scrubber back and forth to find the part that matters."
+              />
+              <FeatureCard
+                icon={
+                  <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
+                    <path
+                      d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 20l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                }
+                title="Then ask anything"
+                body="Chat with the video itself. Ask follow-up questions and get answers pulled straight from what's actually said — accurate, specific, and instant."
+              />
+            </div>
+
+            <div className="flex flex-col items-center gap-3 rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-sm">
+              <h2 className="text-lg font-semibold tracking-tight">Ready to try it?</h2>
+              <p className="text-sm text-stone-500">Sign in with Google to get your 3 free credits.</p>
+              <div className="mt-1">
+                <GoogleSignInButton />
+              </div>
+            </div>
+          </>
         )}
 
         {session && (
