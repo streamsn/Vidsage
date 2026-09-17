@@ -8,11 +8,7 @@
   ],
   "scripts": {
     "dev:web": "npm run dev -w @video-grabber/web",
-    "dev:extension": "npm run dev -w @video-grabber/extension",
     "build:web": "npm run build -w @video-grabber/web",
-    "build:extension": "npm run build -w @video-grabber/extension"
-  },
-  "devDependencies": {
-    "playwright": "^1.63.0"
+    "test:smoke": "node scripts/smoke-test.ts"
   }
 }

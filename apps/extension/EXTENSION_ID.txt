@@ -1,5 +1,0 @@
-olonbpopojfpdfpomoflafpdkjnlchoh
-
-Derived from keys/extension-key-public.der (the "key" field in manifest.json).
-Stable regardless of which folder the unpacked extension is loaded from.
-Google OAuth redirect URI: https://olonbpopojfpdfpomoflafpdkjnlchoh.chromiumapp.org/

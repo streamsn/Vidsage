@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import type Stripe from "stripe";
 import { CREDIT_PACKAGES, type CreditPackageId } from "@video-grabber/shared";
 import { requireUser } from "@/lib/auth";
 import { getStripeClient } from "@/lib/stripe";
@@ -26,7 +27,12 @@ export async function POST(request: Request) {
   const { data: userData } = await supabase.auth.getUser();
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
-  const session = await getStripeClient().checkout.sessions.create({
+  // TODO: remove once product tax codes are set in the Stripe dashboard —
+  // Managed Payments (on by default) requires a tax_code on every product,
+  // which these test products don't have yet.
+  const params: Stripe.Checkout.SessionCreateParams & {
+    managed_payments?: { enabled: boolean };
+  } = {
     mode: "payment",
     line_items: [{ price: priceId, quantity: 1 }],
     customer_email: userData.user?.email ?? undefined,
@@ -36,7 +42,10 @@ export async function POST(request: Request) {
     },
     success_url: `${appUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${appUrl}/checkout/cancel`,
-  });
+    managed_payments: { enabled: false },
+  };
+
+  const session = await getStripeClient().checkout.sessions.create(params);
 
   return NextResponse.json({ url: session.url });
 }
